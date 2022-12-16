@@ -5,7 +5,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/main.js',
-      name: 'QSingle'
+      name: 'QSingle',
+      formats: ['es', 'cjs']
     }
   },
   plugins: [
