@@ -1,0 +1,18 @@
+{
+  "true": {
+      "de": "Wahr",
+      "fr": "Correct"
+    },
+    "false": {
+      "de": "Falsch",
+      "fr": "Incorrect"
+    },
+    "congrats": {
+      "de": "Glückwunsch",
+      "fr": "Félicitations"
+    },
+    "sorry": {
+      "de": "Leider daneben",
+      "fr": "Pas juste"
+    }
+}
