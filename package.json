@@ -40,5 +40,15 @@
   "exports": {
     "./package.json": "./package.json",
     "./QSingle.svelte": "./src/lib/QSingle.svelte"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timonforrer/simplest-quiz.git"
+  },
+  "author": "Timon Forrer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timonforrer/simplest-quiz/issues"
+  },
+  "homepage": "https://github.com/timonforrer/simplest-quiz#readme"
 }
