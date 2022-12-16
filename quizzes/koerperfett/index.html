@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simplest Quiz Test</title>
+</head>
+<body>
+  <q-single
+    style="display:block;min-height: 200px;"
+    title="Quiztime – wahr oder falsch?"
+    question="Kann Körperfett Kalorien verbrennen?"
+    explanation="Klingt verrückt, ist aber wahr. Körperfett selbst benötigt Kalorien. Das Gewebe muss mit Energie versorgt werden, damit es nicht abstirbt. 1 kg Fett verbrennt etwa 4.5 kcal pro Tag. Muskeln benötigen hingegen noch mehr Energie – 13 kcal pro Tag."
+    solution="true"
+    lang="de"
+    data-web-component="https://unpkg.com/@timonforrer/simplest-quiz@0.0.2/dist/simplest-quiz.iife.js">
+  </q-single>
+  <!-- <script>
+    // keep a record of the components we've loaded in this way
+    const imported = {};
+    // Set up our observer:
+    let observer = new IntersectionObserver((entries, observerRef) => {
+      // The callback is run when the visibility of one or more of the elements
+      // being observed has changed. It's also called on page load.
+      entries.forEach(async (entry) => {
+        //`isIntersecting` will be `true` if any part of the element is currently visible
+        if (entry.isIntersecting) {
+          // We are assuming here that your Web Component is located in a file
+          // named after it's tag name
+          const name = entry.target.nodeName.toLowerCase();
+
+          // Once we've observed this element come into view, we can safely remove
+          // the observer since we won't need to import the WC code again
+          observerRef.unobserve(entry.target);
+
+          if (!imported[name]) {
+            // Keep a note of which WCs have been loaded so if we have multiple
+            // instances we don't import twice
+            imported[name] = entry.target.getAttribute('data-web-component');
+
+            // Let's load the WC code
+            import(imported[name]);
+          }
+        }
+      });
+    });
+
+    // Observe all components with the desired class
+    const els = document.querySelectorAll('[data-web-component]');
+    els.forEach((el) => {
+      observer.observe(el);
+    });
+  </script> -->
+</body>
+</html>
