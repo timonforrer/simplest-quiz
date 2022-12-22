@@ -2,6 +2,7 @@
   "name": "@timonforrer/simplest-quiz",
   "version": "0.0.2",
   "type": "module",
+  "files": ["dist"],
   "scripts": {
     "dev": "vite",
     "build": "vite build -c=vite.lib.config.js",
@@ -14,7 +15,7 @@
     "vite": "^4.0.0"
   },
   "description": "This template should help get you started developing with Svelte in Vite.",
-  "main": "src/main.js",
+  "main": "./dist/simplest-quiz.iife.js",
   "dependencies": {
     "debug": "^4.3.4",
     "deepmerge": "^4.2.2",
@@ -36,10 +37,6 @@
     "supports-preserve-symlinks-flag": "^1.0.0",
     "svelte-hmr": "^0.15.1",
     "vitefu": "^0.2.3"
-  },
-  "exports": {
-    "./package.json": "./package.json",
-    "./QSingle.svelte": "./src/lib/QSingle.svelte"
   },
   "repository": {
     "type": "git",
