@@ -22,7 +22,6 @@
     "debug": "^4.3.4",
     "deepmerge": "^4.2.2",
     "esbuild": "^0.16.7",
-    "fsevents": "^2.3.2",
     "function-bind": "^1.1.1",
     "has": "^1.0.3",
     "is-core-module": "^2.11.0",
@@ -39,6 +38,9 @@
     "supports-preserve-symlinks-flag": "^1.0.0",
     "svelte-hmr": "^0.15.1",
     "vitefu": "^0.2.3"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   },
   "repository": {
     "type": "git",
