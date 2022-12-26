@@ -7,6 +7,7 @@
   import t from './translations.json'
 
   // define props
+  export let id = '';
   export let title = '';
   export let question = '';
   export let explanation = '';
@@ -18,11 +19,19 @@
   let voted = false;
   let voteChoice;
   let feedback;
+  let promise = null;
 
   const el = document.querySelector('q-single');
 
   // `solution` prop is a string, convert to boolean
   onMount(() => solution = (solution === 'true'));
+
+  async function getVotes() {
+    let url = 'https://brack-quizzes.netlify.app/.netlify/functions/handle-vote'
+    let params = `?quizID=${id}&vote=${voteChoice}`;
+    const response = await fetch(url+params);
+    return response.json()
+  }
 
   // handle votes
   function vote(choice) {
@@ -36,6 +45,11 @@
     feedback = t[key][lang];
     // reflect success on host
     el.setAttribute('success', success);
+    promise = getVotes();
+  }
+
+  function getAllocation(record) {
+    return Math.round(record.fields.true / (record.fields.true + record.fields.false) * 100)
   }
 </script>
 
@@ -68,6 +82,24 @@
   {#if voted}
     <p>{explanation}</p>
   {/if}
+  {#await promise}
+    <p>{t.loading[lang]}</p>
+  {:then record}
+    {#if record !== null}
+    <div class="allocation">
+      <p><b>{t.results[lang]}</b></p>
+      <div class="space-between">
+        <!--
+          the `getAllocation` function gets called multiple times
+          – this does not make sense…
+        -->
+        <span>{getAllocation(record.record)}% {t.true[lang]}</span>
+        <span>{100 - getAllocation(record.record)}% {t.false[lang]}</span>
+      </div>
+      <div class="indicator" style={`--indicator-value: ${getAllocation(record.record)}%`}></div>
+    </div>
+    {/if}
+  {/await}
 </div>
 
 <style>
@@ -100,13 +132,15 @@
     font-weight: 300;
   }
   small + p,
-  p + p {
+  p + p,
+  .allocation > * ~ * {
     margin-top: 10px;
   }
   p + .controls {
     margin-top: 24px;
   }
-  .controls + p {
+  .controls + p,
+  .allocation {
     margin-top: 32px;
   }
   .controls {
@@ -137,5 +171,22 @@
   }
   path {
     fill: currentColor;
+  }
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+  }
+  .indicator {
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgb(var(--text-color));
+    display: flex;
+    height: 0.5em;
+    overflow: hidden;
+  }
+  .indicator::after {
+    content: '';
+    background-color: rgb(var(--text-color));
+    display: block;
+    width: var(--indicator-value);
   }
 </style>
