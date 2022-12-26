@@ -14,5 +14,17 @@
     "sorry": {
       "de": "Leider daneben",
       "fr": "Pas juste"
+    },
+    "loading": {
+      "de": "Lade Resultate",
+      "fr": "Les résultats ont été chargés"
+    },
+    "allocation": {
+      "de": "Verteilung",
+      "fr": "Distribution"
+    },
+    "results": {
+      "de": "Das haben andere gestimmt",
+      "fr": "D'autres ont voté cela"
     }
 }
